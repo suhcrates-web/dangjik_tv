@@ -157,7 +157,8 @@ if __name__ == "__main__":
     if port == '5232':
         host = '172.30.1.58'
 
-    elif port == '5234':
+    elif port == '5231':
+        port == '5234'
         host = '0.0.0.0'
     # port = 5233
     # 172.30.1.53
