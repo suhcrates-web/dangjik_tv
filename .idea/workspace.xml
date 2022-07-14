@@ -7,6 +7,8 @@
     <list default="true" id="e0fcd518-6cfb-4807-b1db-93783477b368" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/sihwang.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/sihwang.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/sihwang.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/sihwang.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +36,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "last_opened_file_path": "C:/Users/DONGA/Desktop/Computer/Projects/project_donga/dangjik_tv"
+    "last_opened_file_path": "C:/Users/DONGA/Desktop/Computer/Projects/project_infomax/sql연습"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -42,7 +44,7 @@
       <recent name="C:\Users\DONGA\Desktop\Computer\Projects\project_donga\dangjik_tv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.exp8">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dangjik_tv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -106,7 +108,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="jtbc_checker" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="exp8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dangjik_tv" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -118,7 +120,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/jtbc_checker.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp8.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -171,11 +173,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exp8" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.exp6" />
         <item itemvalue="Python.exp7" />
         <item itemvalue="Python.sql_toolbox" />
-        <item itemvalue="Python.jtbc_checker" />
       </list>
     </recent_temporary>
   </component>

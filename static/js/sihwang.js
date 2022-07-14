@@ -35,5 +35,22 @@ $(document).ready(function(){
 
 		
 	});
+
+	$(document).on('click', '#copy', function(){
+
+		var copy0 = $('#content_box') //.text();	
+		var brRegex = /<br\s*[\/]?>/gi;
+		var textArea = document.createElement('textArea');
+		textArea.value = copy0.html().replace(brRegex, "\r\n");
+		document.body.appendChild(textArea);
+		textArea.select();
+		document.execCommand('copy');
+		document.body.removeChild(textArea);
+		alert("클립보드에 복사됐습니다");
+			
+	});
 });
 
+// $(document).ready(function(){
+
+// })
