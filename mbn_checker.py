@@ -28,36 +28,36 @@ def mbn_checker():
     url = 'https://www.mbn.co.kr/lib/module/getProgramReviewList_A.v2.php'
 
     li_list = []
-    download_whole = True
+    # download_whole = True
 
 
     today0 = date.today()
 
-    while  download_whole ==True:
-        download_today = True
-        page_n = 1
-        while download_today == True:
-            data  = {
-            'progCode': '552',
-            'menuCode': '2636',
-            'currentDate': today0.strftime("%Y%m%d"),
-            'page': page_n,
-            }
-            temp = requests.post(url, data= data)
+    # while  download_whole ==True:
+    download_today = True
+    page_n = 1
+    while download_today == True:
+        data  = {
+        'progCode': '552',
+        'menuCode': '2636',
+        'currentDate': today0.strftime("%Y%m%d"),
+        'page': page_n,
+        }
+        temp = requests.post(url, data= data)
 
-            temp = BeautifulSoup(temp.content, 'html.parser')
+        temp = BeautifulSoup(temp.content, 'html.parser')
 
-            li_temp = temp.findAll('li')
-            if li_temp == []:
+        li_temp = temp.findAll('li')
+        if li_temp == []:
 
-                download_today=False
+            download_today=False
 
-            li_list += li_temp
-            page_n +=1
-        if li_list == [] :
-            today0 -= timedelta(days=1)
-        else:
-            download_whole = False
+        li_list += li_temp
+        page_n +=1
+    if li_list == [] :
+        return ("<br>오늘자 안나옴<br><br>")
+    # else:
+    #     download_whole = False
 
 
     item_dics = {}

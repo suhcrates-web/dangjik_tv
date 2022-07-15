@@ -1,19 +1,26 @@
-import requests,re
-from selenium_short import selenium_short
-from bs4 import BeautifulSoup
+import re
 
-url = 'https://imnews.imbc.com/replay/2022/nwdesk/article/6387118_35744.html'
+a = """
+안보실장 주재로 NSC 상임위나 관계부처 장관 회의가 열렸다면 회의록이 남아 있어야 하는데 그 흔적을 찾을 수 없다는 것입니다.
 
-def mbc_selenium_short(url):
-    temp = selenium_short(url)
+이 관계자는 당시 안보실 차원에서 관련 기록을 훼손하거나 고의로 삭제한 것은 아닌지 의심된다고 덧붙였습니다.
 
-    temp = BeautifulSoup(temp, 'html.parser')
+이에 대해 당시 청와대 국정상황실장이던 윤건영 민주당 의원은 자료를 삭제할 이유가 있겠냐고 반문하며 말이 안 되는 소리라고 일축했습니다.
 
-    report =  temp.find('div',{'class':'report'})
-    article =  temp.find('div',{'class':'article'})
+대통령기록물로 이관된 적이 없어 보인다는 대통령실 설명에도 "지정기록물이 되면 제목도 목록도 현 정부가 전 정부 것을 확인할 수 없다"고 의문을 표시했습니다.
 
-    news_txt = temp.find('div', {'class':'news_txt'})
-    news_txt = re.sub(r"MBC 뉴스는 24시간.*",'',news_txt.text)
-    news_txt = news_txt.replace("        ",'').replace('\n\n\n','').replace("        ",'')
-    news_txt = re.sub(r'영상편집:.*','',news_txt)
-    print([news_txt.strip()])
+그러면서 대통령실 주장이 맞는다면 그 근거를 공개하면 될 일이라고 말했습니다.
+
+정의용 전 장관은 전화와 문자메시지에 답하지 않았습니다.
+
+(영상취재 : 주 범·이용한, 영상편집 : 최진화)
+
+
+
+▶ "북한 어민 북송, 국정조사 · 특검" vs "정치공작 꼼수다"
+
+
+▶ [사실은] 북송 두고 범죄인 · 준외국인 논란…법 따져보니'
+"""
+
+print(a[:a.find('(영상취재')])
