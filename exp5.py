@@ -1,18 +1,21 @@
 import requests
 from bs4 import BeautifulSoup
 
-url = 'https://news.jtbc.joins.com/article/article.aspx?news_id=NB12065990&pDate=20220712'
+url = 'https://www.mbn.co.kr/vod/programView/1303482'
 
-def jtbc_article(url):
+
+
+# 단독기사 나올시 개별기사 추리기
+def mbn_article(url):
     temp = requests.get(url)
     temp = BeautifulSoup(temp.content, 'html.parser')
-    # print(temp)
-    articles = temp.findAll('div', {'class':'article_content'})
-    #
-    txt = ''
-    for article in articles:
-        for br in article.find_all("br"):
-            br.replace_with("\n")
 
-        txt+= article.text.strip()
-    return txt.split('☞')[0]
+    txt = temp.find('div', {'class': 'txt'}).p
+    # txt = ''
+    # for article in articles:
+    #     for br in article.find_all("br"):
+    #         br.replace_with("\n")
+    #
+    #     txt += article.text.strip()
+    #     txt = txt.replace('\n','<br>')
+    return txt

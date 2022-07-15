@@ -5,12 +5,14 @@ from database import cursor, db
 from mbc_checker import mbc_checker
 from jtbc_checker import jtbc_checker
 from tvchosun_checker import tvchosun_checker
+from mbn_checker import mbn_checker
 from sql_toolbox import time_checker
 import binascii, codecs
 
 checkers_dic = {'mbc': mbc_checker,
                 'jtbc':jtbc_checker,
-                'tvchosun':tvchosun_checker}
+                'tvchosun':tvchosun_checker,
+                'mbn':mbn_checker}
 
 app = Flask(__name__)
 
