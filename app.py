@@ -86,6 +86,7 @@ def si_post(brod):
 
 @app.route('/donga/dangbun/naver/', methods=['get'])
 def naver_check():
+    from database import cursor
     objs = []
     cursor.execute(
         """
