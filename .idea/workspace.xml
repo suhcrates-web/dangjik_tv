@@ -43,7 +43,7 @@
       <recent name="C:\Users\DONGA\Desktop\Computer\Projects\project_donga\dangjik_tv" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Python.naver_start">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="dangjik_tv" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,9 +172,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.naver_start" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.exp3" />
-        <item itemvalue="Python.naver_start" />
         <item itemvalue="Python.exp2" />
         <item itemvalue="Python.exp4" />
       </list>

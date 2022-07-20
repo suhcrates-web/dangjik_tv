@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 # from database import db, cursor
-import mysql
+import mysql.connector
 import re
 import binascii
 from datetime import datetime
