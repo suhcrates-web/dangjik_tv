@@ -1,14 +1,18 @@
-from selenium import webdriver
+from database import cursor
+import codecs
 
-url = 'https://imnews.imbc.com/replay/2022/nwdesk/article/6387118_35744.html'
-options = webdriver.ChromeOptions()
-options.add_argument('headless')
-options.add_argument("disable-gpu")
-# driver = webdriver.Chrome('./chromedriver', options=options)
-driver = webdriver.Chrome('C:/stamp/chromedriver', options=options)
-driver.get(url)
-html = driver.page_source
-print(html)
+objs = []
+cursor.execute(
+    """
+    select time0, title, press, url from dangbun_stuffs.naver where naver_cp = 1 and good = 1
+    """
+)
+for article in cursor.fetchall()[::-1]:
+    objs.append({
+        'time0': article[0],
+        'title': codecs.decode(article[1], 'utf-8') ,
+        'press': article[2],
+        'url': article[3],
+    })
 
-#드라이버로 크롬 브라우저 제어해서 url 제어시키면 이 페이지에 있는 자바스크립트가 움직인다. 그 자바스크립트가 이 기사의 텍스트를 가져오게 된다.
-#걍 get 만 하면 자바스크립특 가동을 안한다.
+print(objs)

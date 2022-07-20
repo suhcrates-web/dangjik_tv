@@ -1,6 +1,23 @@
-import re
+from database import db, cursor
 
-a = "go_url('http://news.tvchosun.com/site/data/html_dir/2022/07/12/2022071290160.html')"
-a = "go_url('asdf')"
-a = link = re.findall(r"""(?<=\(').*(?='\))""", a)
-print(a)
+cursor.execute(
+    """
+    drop table if exists dangbun_stuffs.naver;
+    """
+)
+
+cursor.execute(
+        f"""
+        CREATE TABLE IF NOT EXISTS dangbun_stuffs.naver(
+        num int not null auto_increment,
+        ind varchar(30),
+        time0 timestamp,
+        title blob,
+        press varchar(30),
+        url varchar(200),
+        naver_cp boolean,
+        good boolean,
+        primary key(num, ind)
+        );
+        """
+    )
