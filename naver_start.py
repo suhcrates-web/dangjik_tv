@@ -7,9 +7,14 @@ import re
 import binascii
 from datetime import datetime
 
+# cursor.execute(
+#     """
+#     drop table if exists dangbun_stuffs.naver;
+#     """
+# )
 cursor.execute(
     """
-    drop table if exists dangbun_stuffs.naver;
+    truncate dangbun_stuffs.naver;
     """
 )
 
