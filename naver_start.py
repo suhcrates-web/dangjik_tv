@@ -1,22 +1,33 @@
-from database import db, cursor
 import requests
 from bs4 import BeautifulSoup
 import time
-from database import db, cursor
+# from database import db, cursor
+import mysql
 import re
 import binascii
 from datetime import datetime
 
-# cursor.execute(
-#     """
-#     drop table if exists dangbun_stuffs.naver;
-#     """
-# )
+config = {
+    'user' : 'root',
+    'password': 'Seoseoseo7!',
+    'host':'localhost',
+    # 'database':'shit',
+    'port':'3306'
+}
+
+db = mysql.connector.connect(**config)
+cursor = db.cursor()
+
 cursor.execute(
     """
-    truncate dangbun_stuffs.naver;
+    drop table if exists dangbun_stuffs.naver;
     """
 )
+# cursor.execute(
+#     """
+#     truncate dangbun_stuffs.naver;
+#     """
+# )
 
 cursor.execute(
         f"""
