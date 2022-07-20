@@ -10,7 +10,6 @@ from kbs_checker import kbs_checker
 from sbs_checker import sbs_checker
 from sql_toolbox import time_checker
 import binascii, codecs
-import timeline
 
 checkers_dic = {'mbc': mbc_checker,
                 'jtbc':jtbc_checker,
