@@ -109,7 +109,7 @@ def naver_routine():
         good = article['good']
         cursor.execute(
             f"""
-            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , "{tit_bin}", "{press}", "{link}", {naver_cp}, {good}
+            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}
             )
             """
         )
