@@ -95,7 +95,7 @@ def naver_check():
     )
     for article in cursor.fetchall()[::-1]:
         objs.append({
-            'time0': article[0],
+            'time0': article[0].strftime("%H:%M"),
             'title': codecs.decode(article[1], 'utf-8'),
             'press': article[2],
             'url': article[3],
