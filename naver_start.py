@@ -54,7 +54,7 @@ dics = {}
 num = 1
 
 # while download==True:
-for _ in range(1):
+for _ in range(3):
     url =f'https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%5B%EB%8B%A8%EB%8F%85%5D%20%7C%20%5B%EC%86%8D%EB%B3%B4%5D&sort=1&photo=0&field=0&pd=0&ds=&de=&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:dd,p:all,a:all&start={page}1'
 
     data = {

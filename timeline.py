@@ -4,7 +4,7 @@ import time
 
 
 while True:
-
-    naver_routine()
     time.sleep(60)
+    naver_routine()
+
 
