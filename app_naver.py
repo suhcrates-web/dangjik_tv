@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, redirect, jsonify
-from flask_sqlalchemy import SQLAlchemy
+# from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime, timedelta
 from database import cursor, db
 import binascii, codecs
