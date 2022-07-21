@@ -40,6 +40,8 @@ cursor.execute(
         url varchar(200),
         naver_cp boolean,
         good boolean,
+        sokbo boolean,
+        writen boolean default False,
         primary key(num, ind)
         );
         """
@@ -52,7 +54,7 @@ dics = {}
 num = 1
 
 # while download==True:
-for _ in range(3):
+for _ in range(1):
     url =f'https://search.naver.com/search.naver?where=news&sm=tab_pge&query=%5B%EB%8B%A8%EB%8F%85%5D%20%7C%20%5B%EC%86%8D%EB%B3%B4%5D&sort=1&photo=0&field=0&pd=0&ds=&de=&mynews=0&office_type=0&office_section_code=0&news_office_checked=&nso=so:dd,p:all,a:all&start={page}1'
 
     data = {
@@ -103,6 +105,7 @@ for _ in range(3):
 
 
         good = True if "[단독]" in tit or "[속보]" in tit else False
+        sokbo = True if "[속보]" in tit else False
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         print(press)
         print(link)
@@ -114,7 +117,7 @@ for _ in range(3):
         #     """
         # )
 
-        dics[num]= {'ind':ind, 'time0':now, 'tit':tit, 'press' : press, 'link':link, 'naver_cp':naver_cp, 'good':good}
+        dics[num]= {'ind':ind, 'time0':now, 'tit':tit, 'press' : press, 'link':link, 'naver_cp':naver_cp, 'good':good, 'sokbo':sokbo}
         num +=1
     db.commit()
     print(f"{page}")
@@ -137,7 +140,7 @@ for article in list(dics.values())[::-1]:
     good = article['good']
     cursor.execute(
         f"""
-        insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}
+        insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False
         )
         """
     )

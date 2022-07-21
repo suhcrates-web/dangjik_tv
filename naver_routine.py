@@ -1,4 +1,5 @@
 import requests
+import mysql.connector
 from bs4 import BeautifulSoup
 import time
 from database import db, cursor
@@ -7,6 +8,15 @@ import binascii
 from datetime import datetime
 
 def naver_routine():
+    config = {
+        'user': 'root',
+        'password': 'Seoseoseo7!',
+        'host': 'localhost',
+        # 'database':'shit',
+        'port': '3306'
+    }
+    db = mysql.connector.connect(**config)
+    cursor = db.cursor()
     cursor.execute(
         """
         select ind from dangbun_stuffs.naver
@@ -109,7 +119,7 @@ def naver_routine():
         good = article['good']
         cursor.execute(
             f"""
-            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}
+            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, False
             )
             """
         )
