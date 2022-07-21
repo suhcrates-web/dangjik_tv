@@ -86,6 +86,7 @@ def naver_routine():
 
 
             good = True if "[단독]" in tit or "[속보]" in tit else False
+            sokbo = True if "[속보]" in tit else False
             now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             print(press)
             # print(link)
@@ -97,7 +98,7 @@ def naver_routine():
             #     """
             # )
             if download_this:
-                dics[num]= {'ind':ind, 'time0':now, 'tit':tit, 'press' : press, 'link':link, 'naver_cp':naver_cp, 'good':good}
+                dics[num]= {'ind':ind, 'time0':now, 'tit':tit, 'press' : press, 'link':link, 'naver_cp':naver_cp, 'good':good, 'sokbo':sokbo}
                 num +=1
         print(f"{page}")
         page +=1
@@ -117,9 +118,10 @@ def naver_routine():
         link = article['link']
         naver_cp = article['naver_cp']
         good = article['good']
+        sokbo = article['sokbo']
         cursor.execute(
             f"""
-            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, False
+            insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo} , False
             )
             """
         )
