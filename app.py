@@ -86,7 +86,7 @@ def si_post(brod):
 
 #잘못들어갈때
 @app.route(f'/donga/dangbun/naver/', methods=['GET'])
-def index():
+def mistake1():
     return redirect('http://testbot.ddns.net:5235/donga/dangbun/naver/only')
 
 

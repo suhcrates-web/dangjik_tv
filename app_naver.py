@@ -73,6 +73,10 @@ def write():
         return text
 
 
+##실수로 들어왔을때 ##
+@app.route('/donga/dangbun/', methods = ['POST','GET'])
+def mistake_2_1():
+    return redirect('http://testbot.ddns.net:5234/donga/dangbun/')
 
 
 if __name__ == "__main__":
