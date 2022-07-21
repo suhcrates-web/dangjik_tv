@@ -34,14 +34,14 @@ def naver_check(what0):
     if what0 == 'all':
         cursor.execute(
             """
-            select time0, title, press, url, ind, writen from dangbun_stuffs.naver 
+            select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver 
             """
             # and good = 1
         )
     elif what0 =='only' or '':
         cursor.execute(
             """
-            select time0, title, press, url, ind, writen from dangbun_stuffs.naver where naver_cp = 1 and good = 1
+            select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and good = 1
             """
         )
     for article in cursor.fetchall()[::-1]:
@@ -51,7 +51,8 @@ def naver_check(what0):
             'press': article[2],
             'url': article[3],
             'ind': article[4],
-            'writen': 'writen' if article[5] else 'None'
+            'writen': 'writen' if article[5] else 'None',
+            'cp': article[6],
         })
     return render_template('bot_v3.html', objs=objs)
 

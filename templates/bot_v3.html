@@ -62,34 +62,24 @@
 
 
 
-    <tr id={{obj.ind}} class="main {{obj.writen}}">
+    <tr id={{obj.ind}} class="main {{obj.writen}}" style="height:45px">
         
         <td>{{ obj.time0}}</td>
-        <td>
-            <a href="{{obj.url}}">{{ obj.title }} </a>
+        <td >
+            <a class='link' href="{{obj.url}}">{{ obj.title }} </a>
 
         </td>
         <td >{{obj.press}}</td>
-        <td><button class='button' id='{{obj.ind}}' name='{{obj.url}}' value="{{obj.press}}" title="{{ obj.title }}"> 작성 </button> </td>
+        <td class='button1' style="width:45px"><button class='button' id='{{obj.ind}}' name='{{obj.url}}' value="{{obj.press}}" title="{{ obj.title }}"> 작성 </button> </td>
         <script>
 
-     
-
                 $(document).ready(function (){
-                    if("{{obj.desk}}" =='' | "{{obj.desk}}" =='0'){
-                        $('#{{obj.ind}}td').addClass('ok')
-                        .html('<h6>굳</h6>')
-                    }else if("{{obj.desk}}" =='1'){
-                        $('#{{obj.ind}}td').addClass('jja')
-                        .html('<h6>안 중요</h6>')
-                    }else if("{{obj.desk}}" =='2'){
-                        $('#{{obj.ind}}td').addClass('kill')
-                        .html('<h6>오류</h6>')
+                    if("{{obj.cp}}" == false){
+                        // $('#'+'{{obj.ind}}').addClass('writen')
+                        $('#{{obj.ind}}').find('.link').removeAttr('href');
+                        $('#{{obj.ind}}').find('.button').remove();
+                        $('#{{obj.ind}}').find('.button1').text("cp아님");
                     };
-
-                    $("#{{obj.ind}}").hover(function () {
-                        $("#{{obj.ind}}").toggleClass('onmouse');
-                    })
                 });
 
             </script>
