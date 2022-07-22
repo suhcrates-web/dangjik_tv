@@ -54,6 +54,7 @@ def giveme_lead(url, press, ind):
 
     if press != '뉴시스':
         article = re.sub(r"\[.*\]",'',article)
+        article = re.sub(r"\【.*\】", '', article)
 
     lead = article.strip().split('\n')[0]
 
