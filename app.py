@@ -39,9 +39,11 @@ def index_brod(brod):
     ago = date0 or (now - timedelta(minutes=3))
     date0 = date0.strftime("%Y년 %m월 %d일 // %H시 %M분")
     article = codecs.decode(content, 'utf-8')
-
-    if (now - ago) < timedelta(minutes=10):
-        article = "<br><br>최근 10분내 작성 보고 없음<br><br>"
+    print(now)
+    print(ago)
+    if (now - ago) > timedelta(minutes=10):
+        print("fuck")
+        article = "<br><br>최근 10분내 작성 보고 없음<br><br><br>"
 
     return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf', brod= brod)
 
