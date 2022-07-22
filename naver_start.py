@@ -138,6 +138,7 @@ for article in list(dics.values())[::-1]:
     link = article['link']
     naver_cp = article['naver_cp']
     good = article['good']
+    sokbo = article['sokbo']
     cursor.execute(
         f"""
         insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False

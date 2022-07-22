@@ -38,13 +38,13 @@ def naver_check(what0):
             """
             # and good = 1
         )
-    elif what0 == 'dan':
+    elif what0 == 'dan' or '':
         cursor.execute(
             """
             select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and good = 1
             """
         )
-    elif what0 =='only' or '':
+    elif what0 =='only':
         cursor.execute(
             """
             select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and (good = 1 or sokbo = 1) 
