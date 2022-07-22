@@ -45,11 +45,16 @@ def giveme_lead(url, press, ind):
     for photo in photos:
         photo.extract()
 
+
     for br in article.find_all("br"):
         br.replace_with("\n")
 
     article = article.text
     article = article.replace('[서울경제]','')
+
+    if press != '뉴시스':
+        article = re.sub(r"\[.*\]",'',article)
+
     lead = article.strip().split('\n')[0]
 
     ## 통신의 경우 (수원=연합뉴스) 어쩌구 기자 =    뺴기
