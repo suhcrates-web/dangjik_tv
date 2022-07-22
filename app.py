@@ -65,19 +65,23 @@ def si_post(brod):
             ago = time_checker(brod) or (now- timedelta(minutes=3))
             # ago = datetime.strptime(ago, '%Y-%m-%d %H:%M:%S')
             if (now - ago) < timedelta(minutes=2):  # 2분미만
-                message = "다른 사람이 생성중이거나 최근 생성 2분 미만입니다…좀만 기다려보세요"
+                message = "다른 사람이 작성중이거나 최근 작성 2분 미만입니다…좀만 기다려보세요"
                 cmd = 'not_yet'
                 time = ''
             else:
 
-                message = checkers_dic[brod]()
-                cursor.execute(
-                    f"""update dangbun_stuffs.brods set date0 = "{now}" where brod="{brod}" """
-                )
-                cursor.execute(
-                    f"""update dangbun_stuffs.brods set content = b'{bin(int(binascii.hexlify(message.encode('utf-8')), 16))[2:]}' where brod="{brod}" """
-                )
-                db.commit()
+                if  (now - ago) > timedelta(minutes=10):
+
+                    message = checkers_dic[brod]()
+                    cursor.execute(
+                        f"""update dangbun_stuffs.brods set date0 = "{now}" where brod="{brod}" """
+                    )
+                    cursor.execute(
+                        f"""update dangbun_stuffs.brods set content = b'{bin(int(binascii.hexlify(message.encode('utf-8')), 16))[2:]}' where brod="{brod}" """
+                    )
+                    db.commit()
+                else :
+                    message = "<br><br>최근 10분내 작성 보고 없음<br><br>"
                 cmd = 'ok'
 
         return {"message": message, "cmd": cmd, "time": now.strftime("%Y년 %m월 %d일 // %H시 %M분")}
