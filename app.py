@@ -28,6 +28,7 @@ def index():
 
 @app.route(f'/donga/dangbun/<brod>/', methods=['GET'])
 def index_brod(brod):
+    now = datetime.today()
     cursor.execute(
         f"""
         select date0, content from dangbun_stuffs.brods where brod = "{brod}" 
@@ -35,8 +36,12 @@ def index_brod(brod):
     )
 
     date0, content = cursor.fetchall()[0]
+    ago = date0 or (now - timedelta(minutes=3))
     date0 = date0.strftime("%Y년 %m월 %d일 // %H시 %M분")
     article = codecs.decode(content, 'utf-8')
+
+    if (now - ago) < timedelta(minutes=10):
+        article = "<br><br>최근 10분내 작성 보고 없음<br><br>"
 
     return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf', brod= brod)
 
@@ -70,18 +75,14 @@ def si_post(brod):
                 time = ''
             else:
 
-                if  (now - ago) > timedelta(minutes=10):
-
-                    message = checkers_dic[brod]()
-                    cursor.execute(
-                        f"""update dangbun_stuffs.brods set date0 = "{now}" where brod="{brod}" """
-                    )
-                    cursor.execute(
-                        f"""update dangbun_stuffs.brods set content = b'{bin(int(binascii.hexlify(message.encode('utf-8')), 16))[2:]}' where brod="{brod}" """
-                    )
-                    db.commit()
-                else :
-                    message = "<br><br>최근 10분내 작성 보고 없음<br><br>"
+                message = checkers_dic[brod]()
+                cursor.execute(
+                    f"""update dangbun_stuffs.brods set date0 = "{now}" where brod="{brod}" """
+                )
+                cursor.execute(
+                    f"""update dangbun_stuffs.brods set content = b'{bin(int(binascii.hexlify(message.encode('utf-8')), 16))[2:]}' where brod="{brod}" """
+                )
+                db.commit()
                 cmd = 'ok'
 
         return {"message": message, "cmd": cmd, "time": now.strftime("%Y년 %m월 %d일 // %H시 %M분")}
