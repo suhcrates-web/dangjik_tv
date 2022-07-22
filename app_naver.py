@@ -47,7 +47,7 @@ def naver_check(what0):
     elif what0 =='only' or '':
         cursor.execute(
             """
-            select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and (good = 1 or sonkbo = 1) 
+            select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and (good = 1 or sokbo = 1) 
             """
         )
     for article in cursor.fetchall()[::-1]:
