@@ -85,7 +85,7 @@ def naver_routine():
                 download_this = False
 
 
-            good = True if "[단독]" in tit or "[속보]" in tit else False
+            good = True if "[단독]"  in tit else False
             sokbo = True if "[속보]" in tit else False
             now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             print(press)

@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route('/donga/dangbun/naver/', methods=['get'])
 def naver_check_0():
-    return redirect('/donga/dangbun/naver/only')
+    return redirect('/donga/dangbun/naver/dan')
 
 
 @app.route('/donga/dangbun/naver/<what0>', methods=['get'])
@@ -38,10 +38,16 @@ def naver_check(what0):
             """
             # and good = 1
         )
-    elif what0 =='only' or '':
+    elif what0 == 'dan':
         cursor.execute(
             """
             select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and good = 1
+            """
+        )
+    elif what0 =='only' or '':
+        cursor.execute(
+            """
+            select time0, title, press, url, ind, writen, naver_cp from dangbun_stuffs.naver where naver_cp = 1 and (good = 1 or sonkbo = 1) 
             """
         )
     for article in cursor.fetchall()[::-1]:
