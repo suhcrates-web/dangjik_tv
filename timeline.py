@@ -5,6 +5,9 @@ import time
 
 while True:
     time.sleep(60)
-    naver_routine()
+    try:
+        naver_routine()
+    except Exception as e:
+        print(e)
 
 

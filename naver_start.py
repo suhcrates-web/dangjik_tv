@@ -5,7 +5,7 @@ import time
 import mysql.connector
 import re
 import binascii
-from datetime import datetime
+from datetime import datetime, date
 
 config = {
     'user' : 'root',
@@ -18,11 +18,25 @@ config = {
 db = mysql.connector.connect(**config)
 cursor = db.cursor()
 
+
 cursor.execute(
     """
-    drop table if exists dangbun_stuffs.naver;
+    select min(time0) from dangbun_stuffs.naver
     """
 )
+min_time = cursor.fetchall()[0][0]
+
+if min_time.date() != datetime.today().date():
+
+    cursor.execute(
+        """
+        drop table if exists dangbun_stuffs.naver;
+        """
+    )
+else:
+    pass
+
+
 # cursor.execute(
 #     """
 #     truncate dangbun_stuffs.naver;
@@ -141,7 +155,7 @@ for article in list(dics.values())[::-1]:
     sokbo = article['sokbo']
     cursor.execute(
         f"""
-        insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False
+        insert ignore into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False
         )
         """
     )

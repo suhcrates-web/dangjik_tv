@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="e0fcd518-6cfb-4807-b1db-93783477b368" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app_naver.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_naver.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/naver_start.py" beforeDir="false" afterPath="$PROJECT_DIR$/naver_start.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/timeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/timeline.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +35,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DONGA/Desktop/Computer/Projects/WebDigging/공시봇프로젝트/bot_flask&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DONGA/Desktop/Computer/Projects/WebDigging/followerCount&quot;
   }
 }</component>
   <component name="RecentsManager">
