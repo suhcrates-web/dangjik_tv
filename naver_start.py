@@ -155,7 +155,7 @@ for article in list(dics.values())[::-1]:
     sokbo = article['sokbo']
     cursor.execute(
         f"""
-        insert ignore into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False
+        insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , b'{tit_bin}', "{press}", "{link}", {naver_cp}, {good}, {sokbo}, False
         )
         """
     )

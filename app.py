@@ -29,26 +29,31 @@ def index():
 @app.route(f'/donga/dangbun/<brod>/', methods=['GET'])
 def index_brod(brod):
     now = datetime.today()
-    cursor.execute(
-        f"""
-        select date0, content from dangbun_stuffs.brods where brod = "{brod}" 
-        """
-    )
+    try:
+        cursor.execute(
+            f"""
+            select date0, content from dangbun_stuffs.brods where brod = "{brod}" 
+            """
+        )
+    
+        date0, content = cursor.fetchall()[0]
+        ago = date0 or (now - timedelta(minutes=3))
+        date0 = date0.strftime("%Y년 %m월 %d일 // %H시 %M분")
+        article = codecs.decode(content, 'utf-8')
+        print(now)
+        print(ago)
+        if (now - ago) > timedelta(minutes=10):
+            print("fuck")
+            article = "<br><br>최근 10분내 작성 보고 없음<br><br><br>"
+    
+        return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf', brod= brod)
 
-    date0, content = cursor.fetchall()[0]
-    ago = date0 or (now - timedelta(minutes=3))
-    date0 = date0.strftime("%Y년 %m월 %d일 // %H시 %M분")
-    article = codecs.decode(content, 'utf-8')
-    print(now)
-    print(ago)
-    if (now - ago) > timedelta(minutes=10):
-        print("fuck")
-        article = "<br><br>최근 10분내 작성 보고 없음<br><br><br>"
-
-    return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf', brod= brod)
-
-
-
+    except:
+        article = "<br><br>새로고침 하세요<br><br><br>"
+        date0 = now.strftime("%Y년 %m월 %d일 // %H시 %M분")
+        return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf',
+                               brod=brod)
+    
 @app.route('/donga/dangbun/<brod>/post', methods=['POST'])
 def si_post(brod):
     if request.method == 'POST':
