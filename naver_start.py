@@ -24,7 +24,7 @@ cursor.execute(
     select min(time0) from dangbun_stuffs.naver
     """
 )
-min_time = cursor.fetchall()[0][0]
+min_time = cursor.fetchall()[0][0] or datetime(2022,1,1)
 
 if min_time.date() != datetime.today().date():
 
@@ -111,19 +111,23 @@ for _ in range(3):
 
         tit = news_area.find('a',class_='news_tit')['title']
         # tit_bin = bin(int(binascii.hexlify(tit.encode('utf-8')), 16))[2:]
-
+        print(press)
+        print(link)
+        print(tit)
         ind = news_area.find('a',class_='news_tit')['onclick']
         ind = re.sub(r'.*g=\d*\.','',ind)
         ind = re.sub(r'&u=.*','',ind)
+        print(ind)
         ind = int(ind)
+        print("======================")
 
 
         good = True if "[단독]" in tit else False
         sokbo = True if "[속보]" in tit else False
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        print(press)
-        print(link)
-        print(tit)
+        # print(press)
+        # print(link)
+        # print(tit)
         # cursor.execute(
         #     f"""
         #     insert into dangbun_stuffs.naver values ( NULL, "{ind}", "{now}" , "{tit_bin}", "{press}", "{link}", {naver_cp}, {good}
