@@ -1,5 +1,5 @@
 from database import db, cursor
-
+import mysql.connector
 
 def time_checker(what0):
     config = {
