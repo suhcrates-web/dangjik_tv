@@ -10,6 +10,7 @@ from kbs_checker import kbs_checker
 from sbs_checker import sbs_checker
 from sql_toolbox import time_checker
 import binascii, codecs
+import mysql.connector
 
 checkers_dic = {'mbc': mbc_checker,
                 'jtbc':jtbc_checker,
@@ -30,6 +31,16 @@ def index():
 def index_brod(brod):
     now = datetime.today()
     try:
+        config = {
+            'user': 'root',
+            'password': 'Seoseoseo7!',
+            'host': 'localhost',
+            # 'database':'shit',
+            'port': '3306'
+        }
+
+        db = mysql.connector.connect(**config)
+        cursor = db.cursor()
         cursor.execute(
             f"""
             select date0, content from dangbun_stuffs.brods where brod = "{brod}" 
@@ -38,6 +49,7 @@ def index_brod(brod):
     
         date0, content = cursor.fetchall()[0]
         ago = date0 or (now - timedelta(minutes=3))
+
         date0 = date0.strftime("%Y년 %m월 %d일 // %H시 %M분")
         article = codecs.decode(content, 'utf-8')
         print(now)
@@ -50,7 +62,10 @@ def index_brod(brod):
 
     except:
         article = "<br><br>새로고침 하세요<br><br><br>"
-        date0 = now.strftime("%Y년 %m월 %d일 // %H시 %M분")
+        # date0 = now.strftime("%Y년 %m월 %d일 // %H시 %M분")
+        date0 = now.strftime(
+            "%Y년 %m월 %d일 // %H시 %M분".encode('unicode-escape').decode()
+        ).encode().decode('unicode-escape')
         return render_template('sihwang.html', article=article, now=date0, id_0='asdf', state='asdf', state_m='asdf',
                                brod=brod)
     
@@ -81,6 +96,16 @@ def si_post(brod):
                 cmd = 'not_yet'
                 time = ''
             else:
+                config = {
+                    'user': 'root',
+                    'password': 'Seoseoseo7!',
+                    'host': 'localhost',
+                    # 'database':'shit',
+                    'port': '3306'
+                }
+
+                db = mysql.connector.connect(**config)
+                cursor = db.cursor()
 
                 message = checkers_dic[brod]()
                 cursor.execute(
@@ -92,7 +117,9 @@ def si_post(brod):
                 db.commit()
                 cmd = 'ok'
 
-        return {"message": message, "cmd": cmd, "time": now.strftime("%Y년 %m월 %d일 // %H시 %M분")}
+        return {"message": message, "cmd": cmd, "time": now.strftime(
+            "%Y년 %m월 %d일 // %H시 %M분".encode('unicode-escape').decode()
+        ).encode().decode('unicode-escape')}
 
 
 
