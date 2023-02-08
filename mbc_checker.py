@@ -4,7 +4,7 @@ from selenium_short import mbc_selenium_short
 
 def mbc_checker():
     result_txt = ''
-    url = 'https://imnews.imbc.com/replay/2022/nwdesk/'
+    url = 'https://imnews.imbc.com/replay/2023/nwdesk/'
     temp = requests.get(url)
 
     temp = BeautifulSoup(temp.content, 'html.parser')
