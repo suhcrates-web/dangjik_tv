@@ -1,10 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 from selenium_short import mbc_selenium_short
+from datetime import date
 
 def mbc_checker():
     result_txt = ''
-    url = 'https://imnews.imbc.com/replay/2023/nwdesk/'
+    url = f'https://imnews.imbc.com/replay/{date.today().year}/nwdesk/'
     temp = requests.get(url)
 
     temp = BeautifulSoup(temp.content, 'html.parser')
